@@ -1,23 +1,31 @@
 {
-  "name": "codalio-blueprint",
-  "owner": {
-    "name": "Codalio",
-    "url": "https://github.com/codalio"
-  },
-  "plugins": [
-    {
-      "name": "codalio-blueprint",
-      "source": "./",
-      "description": "Multi-lens PRD Builder skill: turns a rough product idea into a written PRD — product/scope, architecture-lite, and GTM-lite lenses synthesized into one document.",
-      "version": "0.1.0",
-      "author": {
-        "name": "Codalio",
-        "url": "https://github.com/codalio"
-      },
-      "homepage": "https://github.com/codalio/codalio-blueprint",
-      "repository": "https://github.com/codalio/codalio-blueprint",
-      "license": "MIT",
-      "keywords": ["prd", "product-requirements", "founders", "mvp", "planning", "codalio"]
-    }
-  ]
+	"name": "codalio-blueprint",
+	"owner": {
+		"name": "Codalio",
+		"url": "https://github.com/codalio"
+	},
+	"plugins": [
+		{
+			"name": "codalio-blueprint",
+			"source": "./",
+			"description": "Multi-lens PRD Builder skill: turns a rough product idea into a written PRD — product/scope, architecture-lite, and GTM-lite lenses synthesized into one document.",
+			"version": "0.1.0",
+			"author": {
+				"name": "Codalio",
+				"url": "https://github.com/codalio"
+			},
+			"homepage": "https://github.com/codalio/codalio-blueprint",
+			"repository": "https://github.com/codalio/codalio-blueprint",
+			"license": "MIT",
+			"keywords": [
+				"prd",
+				"product-requirements",
+				"founders",
+				"mvp",
+				"planning",
+				"codalio",
+				"blueprint"
+			]
+		}
+	]
 }
