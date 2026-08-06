@@ -8,7 +8,7 @@ Turn a rough product idea into a written PRD, right inside your IDE coding agent
 
 ## Before / after
 
-**Before:** "I want to build a tool for small teams to split up chores fairly."
+**Before:** "I want to build an app for neighbors to lend and borrow tools instead of everyone buying their own."
 
 **After:** a full PRD — summary, target user, user stories, MVP scope (Now/Next/Later), a lite architecture overview, a lite GTM plan, and open questions — written to `docs/prd/`. See a complete sample run: [`examples/2026-08-06-toolshare-prd.md`](examples/2026-08-06-toolshare-prd.md).
 
