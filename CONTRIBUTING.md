@@ -4,10 +4,10 @@ Thanks for considering a contribution to codalio-blueprint.
 
 ## Ground rules
 
-- **Keep lens content generic.** No field names, terminology, or prompt text lifted from any proprietary product — this repo only reuses the general "multiple lenses → synthesis" idea, nothing specific to how Codalio's own tools work internally.
+- **Keep lens/skill content generic and original.** Don't lift field names, terminology, or prompt text from any proprietary product — write it yourself, from first principles. This applies to any contributor's source of inspiration, not just Codalio's own tools.
 - **One skill per PR.** Don't bundle unrelated skill changes together.
 - **Design-discuss before adding a lens or a new skill.** Open an issue describing the proposed lens/skill and why it earns a place here before writing the PR — see the Roadmap section in [README.md](README.md) for skills already agreed as future work.
-- **Re-read the whole flow before editing part of it.** Before changing any part of `skills/prd-builder/SKILL.md` or its `references/lens-prompts.md`, read both files end to end — a change to one lens or process step can quietly break an assumption made elsewhere in the flow.
+- **Re-read the whole flow before editing part of it.** Before changing any part of a skill's `SKILL.md` or its `references/` files, read all of them end to end — a change to one step, lens, or template can quietly break an assumption made elsewhere in the flow.
 
 ## Making a change
 
