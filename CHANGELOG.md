@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.3.0](https://github.com/codalio/codalio-blueprint/compare/v0.2.0...v0.3.0) (2026-08-07)
+
+
+### Features
+
+* add arch-evaluation skill ([#11](https://github.com/codalio/codalio-blueprint/issues/11)) ([c96034e](https://github.com/codalio/codalio-blueprint/commit/c96034e2131a16a729c195e09ed061bb09aca612))
+* add code-to-prd skill ([#13](https://github.com/codalio/codalio-blueprint/issues/13)) ([6de15cd](https://github.com/codalio/codalio-blueprint/commit/6de15cd4558706cbee03ee6b965b86301213d406))
+* add doc-generation skill ([#12](https://github.com/codalio/codalio-blueprint/issues/12)) ([cf3181f](https://github.com/codalio/codalio-blueprint/commit/cf3181f76ec41ee486467670e43d338611b01b2b))
+* add gtm-plan skill ([#10](https://github.com/codalio/codalio-blueprint/issues/10)) ([0748c98](https://github.com/codalio/codalio-blueprint/commit/0748c98ac58afe0721bec233f197542ca1df7d5a))
+* add mvp-checklist skill ([#9](https://github.com/codalio/codalio-blueprint/issues/9)) ([e0b512a](https://github.com/codalio/codalio-blueprint/commit/e0b512a419abd09b3fd9ddb889f65a6261b95f46))
+
 ## [0.2.0](https://github.com/codalio/codalio-blueprint/compare/v0.1.0...v0.2.0) (2026-08-07)
 
 
