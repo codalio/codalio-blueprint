@@ -1,10 +1,10 @@
 # codalio-blueprint
 
-Turn a rough product idea into a written PRD, right inside your IDE coding agent.
+A set of planning skills for IDE coding agents, starting from a rough product idea and going all the way through launch — flagship skill turns an idea into a written PRD.
 
 - **Idea in, PRD out.** Describe what you're building; get a structured PRD file written to your project.
 - **Multi-lens, not single-shot.** Product & Scope, Architecture & Data (lite), and GTM (lite) each run as a distinct pass, then get synthesized into one document — not three documents stapled together.
-- **Works across hosts.** One skill, ships for Claude Code, Cursor, Codex, Antigravity, and Gemini.
+- **Works across hosts.** Ships for Claude Code, Cursor, Codex, Antigravity, and Gemini.
 
 ## Before / after
 
@@ -27,15 +27,18 @@ Turn a rough product idea into a written PRD, right inside your IDE coding agent
 
 The **prd-builder** skill gathers your idea, asks a few clarifying questions, then runs three lenses over the idea — Product & Scope, Architecture & Data (lite), GTM (lite). If your environment can dispatch isolated sub-tasks, the three lenses run concurrently; otherwise the agent runs them one after another in the same conversation. Either way, the three write-ups get synthesized into a single, consistent PRD — see [`skills/prd-builder/SKILL.md`](skills/prd-builder/SKILL.md) for the full process.
 
+## Skills
+
+- **[prd-builder](skills/prd-builder/SKILL.md)** — turn a product idea into a written PRD (see above)
+- **[mvp-checklist](skills/mvp-checklist/SKILL.md)** — standalone, deeper MVP scoping than the lite version bundled into prd-builder
+- **[gtm-plan](skills/gtm-plan/SKILL.md)** — full go-to-market plan (channels, pricing, launch sequence)
+- **[arch-evaluation](skills/arch-evaluation/SKILL.md)** — evaluate an existing codebase's architecture/tech debt against stated requirements
+- **[doc-generation](skills/doc-generation/SKILL.md)** — turn an approved PRD into supporting docs (backlog, API contract sketch, onboarding doc)
+- **[code-to-prd](skills/code-to-prd/SKILL.md)** — reverse direction: reconstruct a PRD-style doc from an existing codebase
+
 ## Roadmap
 
-Not built yet — future skills in this same repo:
-
-- **mvp-checklist** — standalone, deeper MVP scoping than the lite version bundled here
-- **gtm-plan** — full go-to-market plan (channels, pricing, launch sequence)
-- **arch-evaluation** — evaluate an existing codebase's architecture/tech debt against stated requirements
-- **doc-generation** — turn an approved PRD into supporting docs (backlog, API contract sketch, onboarding doc)
-- **code-to-prd** — reverse direction: reconstruct a PRD-style doc from an existing codebase
+Nothing queued right now — see [CONTRIBUTING.md](CONTRIBUTING.md) for how to propose a new skill.
 
 ## Contributing
 
