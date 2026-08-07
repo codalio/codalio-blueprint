@@ -23,6 +23,20 @@ A set of planning skills for IDE coding agents, starting from a rough product id
 
 **Cursor, Codex, Antigravity, Gemini:** each vendor's local-plugin/extension mechanism changes over time — see that vendor's current docs for installing a local/extension skill, then point it at this repo.
 
+## Updating
+
+New skills and skill updates land on `main` via normal PRs — nothing auto-pulls them into an install.
+
+**Claude Code:**
+
+```
+/plugin marketplace update codalio-blueprint
+```
+
+Then run `/reload-plugins` to load the changes into your current session, or just start a new session — either picks up the latest `main`. Auto-update is off by default for custom marketplaces like this one; toggle it on per-plugin via `/plugin` → Marketplaces → select this marketplace → Enable auto-update, if you'd rather not run the update command yourself.
+
+**Cursor, Codex, Antigravity, Gemini:** these don't yet have one documented update command the way Claude Code does — check that vendor's current local-plugin/extension docs, or remove and re-add the local plugin/extension pointing at this repo to pick up the latest `main`.
+
 ## How it works
 
 The **prd-builder** skill gathers your idea, asks a few clarifying questions, then runs three lenses over the idea — Product & Scope, Architecture & Data (lite), GTM (lite). If your environment can dispatch isolated sub-tasks, the three lenses run concurrently; otherwise the agent runs them one after another in the same conversation. Either way, the three write-ups get synthesized into a single, consistent PRD — see [`skills/prd-builder/SKILL.md`](skills/prd-builder/SKILL.md) for the full process.
