@@ -18,7 +18,7 @@ A set of planning skills for IDE coding agents, starting from a rough product id
 
 ```
 /plugin marketplace add codalio/codalio-blueprint
-/plugin install prd-builder@codalio-blueprint
+/plugin install codalio-blueprint@codalio-blueprint
 ```
 
 **Cursor, Codex, Antigravity, Gemini:** each vendor's local-plugin/extension mechanism changes over time — see that vendor's current docs for installing a local/extension skill, then point it at this repo.
