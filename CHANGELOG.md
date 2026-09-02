@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/codalio/codalio-blueprint/compare/v0.3.0...v0.3.1) (2026-09-02)
+
+
+### Bug Fixes
+
+* **docs:** plugin installation command for codalio-blueprint ([#18](https://github.com/codalio/codalio-blueprint/issues/18)) ([526e6b8](https://github.com/codalio/codalio-blueprint/commit/526e6b8fe29f9b6fdacef824bf9df72b19488ff5))
+
 ## [0.3.0](https://github.com/codalio/codalio-blueprint/compare/v0.2.0...v0.3.0) (2026-08-07)
 
 
