@@ -1,6 +1,6 @@
 {
 	"name": "codalio-blueprint",
-	"version": "0.3.1",
+	"version": "0.4.0",
 	"description": "Planning and review skills for IDE coding agents: turn a rough product idea into a written PRD, then review what gets built for security, performance, regression risk, and test coverage.",
 	"author": {
 		"name": "Codalio",

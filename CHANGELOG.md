@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.4.0](https://github.com/codalio/codalio-blueprint/compare/v0.3.1...v0.4.0) (2026-09-11)
+
+
+### Features
+
+* add efficient-coding skill ([#25](https://github.com/codalio/codalio-blueprint/issues/25)) ([fb6e242](https://github.com/codalio/codalio-blueprint/commit/fb6e242e4c7f2320655f554660169ef116e1c0fa))
+* add regression-analysis skill ([#26](https://github.com/codalio/codalio-blueprint/issues/26)) ([8b126fe](https://github.com/codalio/codalio-blueprint/commit/8b126fe45e6f389596d45a980de8b49fbee84c5d))
+* add secure-coding skill ([#24](https://github.com/codalio/codalio-blueprint/issues/24)) ([3075d87](https://github.com/codalio/codalio-blueprint/commit/3075d87a1627b8b86db2a14f47a66469583db1e3))
+* add test-planning skill ([#27](https://github.com/codalio/codalio-blueprint/issues/27)) ([01a99e4](https://github.com/codalio/codalio-blueprint/commit/01a99e4493b1414e3577866c264eb28c5eee4a6d))
+
 ## [0.3.1](https://github.com/codalio/codalio-blueprint/compare/v0.3.0...v0.3.1) (2026-09-02)
 
 
