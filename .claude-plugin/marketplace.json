@@ -8,7 +8,7 @@
 		{
 			"name": "codalio-blueprint",
 			"source": "./",
-			"description": "Multi-lens PRD Builder skill: turns a rough product idea into a written PRD — product/scope, architecture-lite, and GTM-lite lenses synthesized into one document.",
+			"description": "Planning and review skills for IDE coding agents: turn a rough product idea into a written PRD, then review what gets built for security, performance, regression risk, and test coverage.",
 			"version": "0.1.0",
 			"author": {
 				"name": "Codalio",

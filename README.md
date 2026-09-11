@@ -1,6 +1,6 @@
 # codalio-blueprint
 
-A set of planning skills for IDE coding agents, starting from a rough product idea and going all the way through launch — flagship skill turns an idea into a written PRD.
+A set of planning and review skills for IDE coding agents, starting from a rough product idea and going all the way through launch — flagship skill turns an idea into a written PRD, and later skills review what gets built.
 
 - **Idea in, PRD out.** Describe what you're building; get a structured PRD file written to your project.
 - **Multi-lens, not single-shot.** Product & Scope, Architecture & Data (lite), and GTM (lite) each run as a distinct pass, then get synthesized into one document — not three documents stapled together.
