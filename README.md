@@ -49,6 +49,7 @@ The **prd-builder** skill gathers your idea, asks a few clarifying questions, th
 - **[arch-evaluation](skills/arch-evaluation/SKILL.md)** — evaluate an existing codebase's architecture/tech debt against stated requirements
 - **[doc-generation](skills/doc-generation/SKILL.md)** — turn an approved PRD into supporting docs (backlog, API contract sketch, onboarding doc)
 - **[code-to-prd](skills/code-to-prd/SKILL.md)** — reverse direction: reconstruct a PRD-style doc from an existing codebase
+- **[secure-coding](skills/secure-coding/SKILL.md)** — review a change or data-access layer for authorization and data-exposure defects before it ships
 - **[efficient-coding](skills/efficient-coding/SKILL.md)** — review a change for performance cost, worked in order of impact from data access down to code volume
 - **[regression-analysis](skills/regression-analysis/SKILL.md)** — trace what a change could break through its consumers, ranked by how silently each failure would happen
 - **[test-planning](skills/test-planning/SKILL.md)** — decide which tests must exist before a change ships, at which tier, and which are not worth writing
