@@ -53,6 +53,7 @@ The **prd-builder** skill gathers your idea, asks a few clarifying questions, th
 - **[efficient-coding](skills/efficient-coding/SKILL.md)** — review a change for performance cost, worked in order of impact from data access down to code volume
 - **[regression-analysis](skills/regression-analysis/SKILL.md)** — trace what a change could break through its consumers, ranked by how silently each failure would happen
 - **[test-planning](skills/test-planning/SKILL.md)** — decide which tests must exist before a change ships, at which tier, and which are not worth writing
+- **[productivity-metrics](skills/productivity-metrics/SKILL.md)** — measure delivery from the repo's real git/GitHub history across team, blueprint-impact, and individual lenses
 
 ## Roadmap
 
