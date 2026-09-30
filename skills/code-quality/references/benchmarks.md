@@ -22,7 +22,7 @@ the fact.
 
 | Family | Gate metric | Gate value on new code | Regression check | Needs |
 |---|---|---|---|---|
-| Correctness & reliability | Test pass rate | 100% of the tests that ran, with flaky tests reported separately | — | the test runner |
+| Correctness & reliability | Test pass rate | 100% of the non-flaky tests that ran. The verdict names every flaky test, and each flaky test in changed code goes on the findings list | — | the test runner |
 | Correctness & reliability | Build success | build and type check succeed | — | CI or a local build |
 | Correctness & reliability | Reliability rating | A | yes | SonarQube or equivalent |
 | Security | Static analysis criticals and highs | 0, after the severity mapping in `references/metric-model.md` | — | one static analysis tool |
@@ -48,7 +48,8 @@ a change that copies existing code or silences existing errors.
 | Metric | Floor | Target | Stretch | Source |
 |---|---|---|---|---|
 | Cyclomatic complexity, 90th percentile per function | ≤ 20 (SEI moderate-risk ceiling) | ≤ 10 (McCabe's recommended maximum) | ≤ 7 | SEI risk bands; McCabe (1976) |
-| Duplicate line density, new code | < 7.3% (at or below the AI-era baseline, see note 1) | < 3% (Sonar way default) | < 1% | GitClear (2026); SonarSource Sonar way |
+| Duplicate line density, new code | — (no published line-density floor exists) | < 3% (Sonar way default) | < 1% | SonarSource Sonar way |
+| Duplicated block density, per 1,000 changed lines | ≤ 73 (at or below the AI-era baseline, see note 1) | — | — | GitClear (2026) |
 | Coverage, new code | ≥ 70% | ≥ 80% (Sonar way default) | ≥ 90%, plus mutation score ≥ 80% on critical logic | SonarSource Sonar way; Just et al. (2014) on why coverage alone is not enough at the stretch tier |
 | Technical debt ratio | ≤ 10% (band B) | ≤ 5% (band A) | ≤ 3% | SQALE, Letouzey (2012) |
 | Static analysis criticals and highs, new code | 0 | 0 | 0, plus dependency advisories patched within the team's agreed window | SonarSource Sonar way; Pearce et al. (2022) |
@@ -61,7 +62,10 @@ Reference scales used for grading without their own floor/target/stretch row:
 |---|---|---|
 | Cyclomatic complexity per function | 1–10 simple; 11–20 moderate risk; 21–50 high risk; over 50 untestable. Anything over 20 goes on the findings list for a refactor review, not just a warning | SEI; McCabe (1976) |
 | Technical debt ratio letters | A ≤ 5%; B 6–10%; C 11–20%; D 21–50%; E over 50% | SQALE, Letouzey (2012) |
-| Maintainability index (0–100) | over 85 highly maintainable; 65–85 moderately maintainable; under 65 low maintainability, refactor candidate | Oman & Hagemeister (1992), as popularized by Visual Studio code metrics |
+| Maintainability index, rescaled 0–100 (the scale `references/metric-model.md` reports) | 20–100 good maintainability; 10–19 moderate; 0–9 low, refactor candidate | Microsoft Visual Studio code metrics documentation; radon uses the same cut-offs for its A/B/C ranks |
+
+The 85/65 cut-offs from Oman & Hagemeister (1992) apply only to the raw,
+unscaled index. Never grade a 0–100 score against them.
 | Reliability and security ratings | A on new code | SonarSource Sonar way |
 
 ## Why each source is here
@@ -76,9 +80,11 @@ Reference scales used for grading without their own floor/target/stretch row:
   suggested ceiling is 10.
 - **SQALE, Letouzey (2012).** The technical debt ratio method and its letter
   bands, which SonarQube reports natively.
-- **Oman & Hagemeister (1992).** The maintainability index and its banding,
-  popularized by Microsoft's tooling in its 0–100 form. A familiar scale to
-  reviewers who have used Visual Studio code metrics.
+- **Oman & Hagemeister (1992).** The original maintainability index, and the
+  85/65 cut-offs on its raw scale.
+- **Microsoft Visual Studio code metrics.** The 0–100 rescale this skill
+  reports, and the 20/10 cut-offs that go with it. A familiar scale to
+  reviewers who have used Visual Studio.
 - **GitClear (2026), AI-era code quality research.** Telemetry over hundreds
   of millions of changed lines. As AI authorship rises, it reports
   duplicated blocks at 73 per 1,000 changed lines (up 81% since 2023),
@@ -110,10 +116,12 @@ Reference scales used for grading without their own floor/target/stretch row:
 
 ## Notes
 
-1. **Where the 7.3% duplication floor comes from.** GitClear's 2026 report
-   gives 73 duplicated blocks per 1,000 changed lines, and the floor
-   expresses that baseline as a percentage. GitClear's detector and yours
-   will differ, so name the tool used when grading against it.
+1. **Keep the duplication baseline in its own unit.** GitClear's 2026 report
+   gives 73 duplicated *blocks* per 1,000 changed lines. Blocks are not
+   lines, so that figure is not a floor for duplicate line density and must
+   not be converted into a percentage. Grade block density against 73, and
+   line density against the Sonar way threshold only. GitClear's detector
+   and yours will differ, so name the tool used when grading against it.
 2. **Re-verify the AI-era figures before quoting them.** The GitClear and
    DORA numbers move with each yearly report. Before any assessment is
    quoted outside the team, check the band sources against the current
@@ -140,4 +148,5 @@ Reference scales used for grading without their own floor/target/stretch row:
 - GitClear. "The Maintainability Gap: 2026 AI code quality research." https://www.gitclear.com/the_ai_code_quality_maintainability_gap
 - DORA. "Accelerate State of DevOps Report 2023." https://dora.dev/research/2023/dora-report/
 - DORA. "State of AI-assisted Software Development 2025." https://dora.dev/dora-report-2025/
+- Microsoft. "Code metrics — Maintainability index range and meaning." Visual Studio documentation. https://learn.microsoft.com/visualstudio/code-quality/code-metrics-maintainability-index-range-and-meaning
 - SonarSource. "Sonar way" quality gate documentation. https://www.sonarsource.com

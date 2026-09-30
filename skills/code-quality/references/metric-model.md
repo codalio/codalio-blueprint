@@ -51,7 +51,7 @@ alongside.
 
 | Metric | Formula | Tools | Normalization | Stage |
 |---|---|---|---|---|
-| Test pass rate | tests passed ÷ tests run × 100, on the run triggered by the change. Rerun each failing test once: one that then passes is counted as flaky, listed by name, and excluded from both counts. Skipped tests are excluded too, and their count reported | RSpec / Minitest; Jest / Vitest; pytest | % per change, plus flaky and skipped counts | 1 |
+| Test pass rate | tests passed ÷ tests run × 100, on the run triggered by the change. Rerun each failing test once: one that then passes is counted as flaky and kept out of the rate. A flaky test may be an intermittent real bug, so it is never dropped silently: the gate verdict names every flaky test, and a flaky test in changed code is a finding. "In changed code" means the test file changed in the range, or, where per-test coverage exists, the test exercises changed lines. Skipped tests are excluded too, and their count reported | RSpec / Minitest; Jest / Vitest; pytest | % per change, plus the named flaky tests and the skipped count | 1 |
 | Build success | the build, and the type or load check where the stack has one, succeeds on the head commit. Where CI history exists, also report successful builds ÷ build attempts × 100 across the change's runs | the CI pipeline; `tsc --noEmit`; `rails zeitwerk:check`; `mypy` | pass or fail on the head commit; % per change across attempts | 1 |
 | Reliability rating | letter set by the worst open bug on new code: A none; B minor; C major; D critical; E blocker | SonarQube or equivalent | letter A–E, new code | 1 |
 | Post-merge defect density | bugs traced to the change within a fixed window after merge ÷ (lines merged ÷ 1,000); or ÷ merged changes. Looking back only, so never available at merge time. Tracing bugs to changes through `git blame` misattributes often: whitespace, moved, and reformatted lines take the blame. Report it as low confidence and state the attribution method | issue tracker plus `git blame` | bugs per KLOC, or per merged change | 2 — needs the window (30 days is common) |
@@ -87,7 +87,8 @@ gate. They explain its result.
 
 | Metric | Formula | Tools | Normalization | Stage |
 |---|---|---|---|---|
-| Duplicate line density | duplicated lines ÷ total lines × 100; for changes, also duplicated lines ÷ changed lines × 1,000, reported as "per 1,000 changed lines" | jscpd (JS/TS, multi-language); Flay (Ruby); SonarQube | % of lines, or per 1,000 changed lines | 1 |
+| Duplicate line density | duplicated lines ÷ total lines × 100 | jscpd (JS/TS, multi-language); Flay (Ruby); SonarQube | % of lines, new code | 1 |
+| Duplicated block density | duplicated blocks touching changed lines ÷ changed lines × 1,000. A separate unit from line density; never convert one into the other | jscpd; Flay; SonarQube | blocks per 1,000 changed lines | 1 |
 | Technical debt ratio | remediation cost ÷ development cost × 100. Remediation cost sums each open issue's estimated fix time; development cost is lines × a cost-per-line constant (SonarQube defaults to 30 minutes per line) | SonarQube | % mapped to letter A–E | 1 |
 | Code smell density | smells ÷ lines × 1,000 | Reek (Ruby, built on Fowler's smell catalog); ESLint; SonarQube | per KLOC | 1 |
 | Error-masking density | empty catch/rescue blocks plus catch-all handlers that swallow the error ÷ lines × 1,000 | RuboCop `Lint/SuppressedException` and `Lint/RescueException`; ESLint `no-empty` (JavaScript has no standard rule for a non-empty catch that swallows the error; say that only empty blocks were counted); Bandit B110 and B112, Ruff `BLE001` | per KLOC | 1 |

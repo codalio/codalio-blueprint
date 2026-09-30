@@ -145,7 +145,9 @@ in `references/benchmarks.md`. Read both before measuring anything.
 11. **Rank the findings behind the numbers.** For every failing or
     near-failing metric, name the files and functions driving it, with the
     measured value for each, ranked by which headline gate they block. For
-    each, give the smallest change that would move the number honestly.
+    each, give the smallest change that would move the number honestly. A
+    flaky test in changed code is always a finding, ranked under the
+    correctness gate, because it may be an intermittent real bug.
     Never recommend a change that games a metric: splitting a function
     mechanically to lower its complexity score, excluding files from
     analysis, wrapping failures in broader error handling, or deleting the
