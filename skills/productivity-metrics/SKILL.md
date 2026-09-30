@@ -1,6 +1,6 @@
 ---
 name: productivity-metrics
-description: Use when the user wants delivery measured from the repo's real git/GitHub history — full reports or one casual question: "how productive is our team", PR cycle time, review wait, how often we release, "feels slower lately", DORA metrics, whether the codalio-blueprint skills changed delivery, or a breakdown of my own work. Writes one report across team, blueprint-impact and individual lenses. Not for OKRs without data, product analytics, single-PR review, line counts, or architecture reviews.
+description: Use when the user wants delivery measured from the repo's real git/GitHub history — full reports or one casual question — "how productive is our team", PR cycle time, review wait, how often we release, "feels slower lately", DORA metrics, whether the codalio-blueprint skills changed delivery, or a breakdown of my own work. Writes one report across team, blueprint-impact and individual lenses. Not for OKRs without data, product analytics, single-PR review, line counts, or architecture reviews.
 ---
 
 # Productivity Metrics
