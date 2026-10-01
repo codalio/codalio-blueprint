@@ -100,7 +100,10 @@ it is called in your environment?**
 - **Correlation is not causation.** The impact lens compares periods; it
   cannot prove a skill caused a change. Say so, and say how small the sample is.
 - **Exclude bots and release automation** from delivery figures (the
-  collector flags them). Mention how many were excluded.
+  collector flags them, including automated reviewers, which it also drops
+  from review latency). Mention how many were excluded.
+- **Say when history is cut off.** If `history_truncated` is true, the
+  oldest PRs are missing, so the impact lens's "before" period is incomplete.
 - **"Not enough data" is a valid finding.** Under ~10 PRs in a window, report
   the raw values and skip percentiles and trend claims.
 

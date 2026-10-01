@@ -74,8 +74,9 @@ Cover:
 - **Shipped** — merged PRs, grouped by type, with titles of the notable ones.
 - **Flow** — own median cycle time versus team median; own PR size versus
   team median.
-- **Collaboration** — reviews given on other people's PRs; how many of the
-  subject's own PRs merged with no review by anyone else.
+- **Collaboration** — other people's PRs reviewed (`prs_reviewed`: distinct
+  PRs, not review comments); how many of the subject's own PRs merged with no
+  review by anyone else.
 - **Rhythm** — active days (days with a merged PR) across the window.
 - **One observation worth acting on** — framed as a suggestion for the
   subject, not a judgment (e.g. "most PRs merge without a second reviewer").
