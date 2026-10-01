@@ -63,10 +63,10 @@ Reference scales used for grading without their own floor/target/stretch row:
 | Cyclomatic complexity per function | 1–10 simple; 11–20 moderate risk; 21–50 high risk; over 50 untestable. Anything over 20 goes on the findings list for a refactor review, not just a warning | SEI; McCabe (1976) |
 | Technical debt ratio letters | A ≤ 5%; B 6–10%; C 11–20%; D 21–50%; E over 50% | SQALE, Letouzey (2012) |
 | Maintainability index, rescaled 0–100 (the scale `references/metric-model.md` reports) | 20–100 good maintainability; 10–19 moderate; 0–9 low, refactor candidate | Microsoft Visual Studio code metrics documentation; radon uses the same cut-offs for its A/B/C ranks |
+| Reliability and security ratings | A on new code | SonarSource Sonar way |
 
 The 85/65 cut-offs from Oman & Hagemeister (1992) apply only to the raw,
 unscaled index. Never grade a 0–100 score against them.
-| Reliability and security ratings | A on new code | SonarSource Sonar way |
 
 ## Why each source is here
 
