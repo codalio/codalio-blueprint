@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.0](https://github.com/codalio/codalio-blueprint/compare/v0.4.0...v0.5.0) (2026-10-02)
+
+
+### Features
+
+* **skills:** add code-quality skill ([#31](https://github.com/codalio/codalio-blueprint/issues/31)) ([304f2d6](https://github.com/codalio/codalio-blueprint/commit/304f2d6f1ec871f4c2543055fcf8f3182896836f))
+* **skills:** add productivity-metrics skill ([#30](https://github.com/codalio/codalio-blueprint/issues/30)) ([7e90572](https://github.com/codalio/codalio-blueprint/commit/7e905722133f8e9ba6f031a005c46317be2c5143))
+
 ## [0.4.0](https://github.com/codalio/codalio-blueprint/compare/v0.3.1...v0.4.0) (2026-09-11)
 
 
