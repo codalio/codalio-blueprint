@@ -61,7 +61,7 @@ alongside.
 | Metric | Formula | Tools | Normalization | Stage |
 |---|---|---|---|---|
 | Static analysis findings by severity | findings ÷ lines × 1,000, per severity (critical, high, medium, low) | Brakeman (Rails); Semgrep with an OWASP rule set (JS/TS and others); Bandit (Python) | per KLOC, new code; gate is zero new critical or high | 1 |
-| Dependency vulnerabilities | open advisories in direct and transitive dependencies, split into production and development-only | `npm audit` (production only: `npm audit --omit=dev`); `bundler-audit` (name the Gemfile group each vulnerable gem belongs to); `pip-audit` | raw count by severity band, production and development-only reported separately | 1 |
+| Dependency vulnerabilities | open advisories in direct and transitive dependencies, split into production and development-only | `npm audit` (production only: `npm audit --omit=dev`); `bundler-audit` (name the Gemfile group each vulnerable gem belongs to); `pip-audit` (production only: `pip-audit -r` on the production requirements file or the lock file's main group; audit development groups separately) | raw count by severity band, production and development-only reported separately | 1 |
 | Security rating | same letter rule as reliability rating, applied to vulnerabilities | SonarQube or equivalent | letter A–E, new code | 1 |
 
 ### Severity mapping
@@ -90,8 +90,9 @@ when it is hand-written code that could have been one shared function,
 component, or module, and report each one as missed reuse with both
 locations. Leave out:
 
-- files a code generator produced from another source, since the fix belongs
-  in that source;
+- files a deterministic code generator produced from another checked-in
+  source (scaffolds, schema or API-spec codegen), since the fix belongs in
+  that source. Code written by an AI assistant is hand-written for this rule;
 - declarative data, such as permission or attribute lists, schema,
   migrations, fixtures, and translations;
 - tests;
