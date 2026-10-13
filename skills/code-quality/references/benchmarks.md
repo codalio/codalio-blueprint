@@ -26,7 +26,7 @@ the fact.
 | Correctness & reliability | Build success | build and type check succeed | — | CI or a local build |
 | Correctness & reliability | Reliability rating | A | yes | SonarQube or equivalent |
 | Security | Static analysis criticals and highs | 0, after the severity mapping in `references/metric-model.md` | — | one static analysis tool |
-| Security | Dependency advisories introduced in scope | 0 critical or high | — | the stack's audit tool |
+| Security | Dependency advisories introduced in scope, production dependencies only | 0 critical or high. Advisories in development-only dependencies (test runners, linters, build tooling that does not ship) do not vote; each one goes on the findings list | — | the stack's audit tool |
 | Security | Security rating | A | yes | SonarQube or equivalent |
 | Duplication & maintainability | Duplicate line density | < 3% | yes | jscpd, Flay, or SonarQube |
 | Duplication & maintainability | Technical debt ratio | ≤ 5% (A) | yes | SonarQube |

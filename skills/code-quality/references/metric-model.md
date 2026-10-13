@@ -61,7 +61,7 @@ alongside.
 | Metric | Formula | Tools | Normalization | Stage |
 |---|---|---|---|---|
 | Static analysis findings by severity | findings ÷ lines × 1,000, per severity (critical, high, medium, low) | Brakeman (Rails); Semgrep with an OWASP rule set (JS/TS and others); Bandit (Python) | per KLOC, new code; gate is zero new critical or high | 1 |
-| Dependency vulnerabilities | open advisories in direct and transitive dependencies | `npm audit`; `bundler-audit`; `pip-audit` | raw count by severity band | 1 |
+| Dependency vulnerabilities | open advisories in direct and transitive dependencies, split into production and development-only | `npm audit` (production only: `npm audit --omit=dev`); `bundler-audit` (it reports no groups; a vulnerable gem is production when `bundle list --without-group development test` lists it, which includes transitive gems); `pip-audit` (production only: `pip-audit -r` on the production requirements file or the lock file's main group; audit development groups separately) | raw count by severity band, production and development-only reported separately | 1 |
 | Security rating | same letter rule as reliability rating, applied to vulnerabilities | SonarQube or equivalent | letter A–E, new code | 1 |
 
 ### Severity mapping
@@ -84,6 +84,25 @@ counting, and state the mapping in the reproduction section.
 
 Refactor share and maintainability index are stage 3 and do not decide the
 gate. They explain its result.
+
+**What counts as duplication.** Both duplication metrics count a clone only
+when it is hand-written code that could have been one shared function,
+component, or module, and report each one as missed reuse with both
+locations. Leave out:
+
+- files a deterministic code generator produced from another checked-in
+  source (scaffolds, schema or API-spec codegen), since the fix belongs in
+  that source. Code written by an AI assistant is hand-written for this rule;
+- declarative data, such as permission or attribute lists, schema,
+  migrations, fixtures, and translations;
+- tests;
+- import blocks and framework boilerplate.
+
+Excluded code leaves the denominator as well as the count. Set these
+exclusions before measuring and list them in the reproduction section, and
+note beside each duplication grade that the published bands do not define
+these exclusions. Leaving out anything else to lower the number is gaming the metric
+(see `SKILL.md` step 11).
 
 | Metric | Formula | Tools | Normalization | Stage |
 |---|---|---|---|---|

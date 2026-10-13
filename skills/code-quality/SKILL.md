@@ -1,6 +1,6 @@
 ---
 name: code-quality
-description: Use when the user wants the quality of a codebase or a change measured — e.g. "assess code quality", "how maintainable is this", "is this PR up to our quality bar", "give me a quality scorecard", "is the AI-generated code any good". Produces normalized, reproducible numbers graded against named public benchmarks, not an impression.
+description: Use when the user wants the quality of a codebase or a change measured — e.g. "assess code quality", "how maintainable is this", "is this PR up to our quality bar", "give me a quality scorecard", "is the AI-generated code any good", "score this codebase out of 10". Produces normalized, reproducible numbers graded against named public benchmarks, not an impression.
 ---
 
 # Code Quality
@@ -37,6 +37,11 @@ families decide whether the code passes; the supporting families explain why.
 Formulas, tools per stack, and normalization rules for every metric are in
 `references/metric-model.md`. Threshold bands and the sources behind them are
 in `references/benchmarks.md`. Read both before measuring anything.
+
+Tools miss design flaws, logic bugs, and missing access controls, so after
+measuring, an engineering review scores the code by reading it, using the
+rubric in `references/engineering-review.md`. Its scores sit beside the
+measured numbers and never change them.
 
 **Announce at start:** "I'm using the code-quality skill to measure this code against named quality benchmarks."
 
@@ -150,9 +155,15 @@ in `references/benchmarks.md`. Read both before measuring anything.
     correctness gate, because it may be an intermittent real bug.
     Never recommend a change that games a metric: splitting a function
     mechanically to lower its complexity score, excluding files from
-    analysis, wrapping failures in broader error handling, or deleting the
+    analysis beyond the exclusions `references/metric-model.md` defines, wrapping failures in broader error handling, or deleting the
     tests that covered duplicated code.
-12. **Write the doc** to
+12. **Run the engineering review.** Read the code and score each category
+    in `references/engineering-review.md` from 1 to 10, citing the files and
+    lines behind each score. Then give the overall score, the engineering
+    verdict, and, for the top defects, the projected score if fixed. List
+    any exploitable defect it finds beside the gate verdict, even when the
+    measured security gate passed.
+13. **Write the doc** to
     `docs/code-quality/YYYY-MM-DD-<scope-slug>-code-quality-assessment.md`
     in the user's project (create `docs/code-quality/` if it doesn't exist).
     Include the reproduction section: every tool, its version, the
@@ -165,13 +176,15 @@ in `references/benchmarks.md`. Read both before measuring anything.
     job (mutation testing). Where the repository spans several stacks,
     recommend one analysis project covering all of them, so the ratings come
     from one quality gate rather than several disconnected reports.
-13. **Self-review.** Check that every number traces to tool output from this
-    run, or is labeled as sampled or not measured; that every count has its
+14. **Self-review.** Check that every measured number traces to tool output
+    from this run, or is labeled as sampled or not measured; that every review
+    score cites the code behind it; that every development-only advisory is
+    in the findings; that every count has its
     denominator; that coverage never appears without its pairing note; that
     every grade cites its band's source; that every security count went through the severity mapping; that the
     verdict names any gate metric that could not be measured; and that the
     gate verdict is stated before the supporting detail.
-14. **User review gate.** Point the user to the file and ask them to review
+15. **User review gate.** Point the user to the file and ask them to review
     before treating it as final. This skill measures and reports; it does not
     refactor code, install tools, or change CI unless the user asks for that
     separately.
@@ -185,6 +198,9 @@ in `references/benchmarks.md`. Read both before measuring anything.
 
 ## 1. Scope Assessed (what, why, commit range, stacks)
 ## 2. Quality Gate Verdict (per headline family)
+
+Exploitable defects found by the engineering review: <none, or each with file:line>
+
 ## 3. Headline Scorecard
 
 | Family | Metric | Value | Denominator | Floor / Target / Stretch | Band reached | Band source | 4-week trend |
@@ -193,7 +209,17 @@ in `references/benchmarks.md`. Read both before measuring anything.
 ## 4. Supporting Metrics
 ## 5. Trend-Only Metrics (direction since baseline)
 ## 6. Paired Context (coverage and mutation, authorship share)
-## 7. Findings Driving the Numbers (ranked)
-## 8. How to Reproduce These Numbers
-## 9. Not Measured / Low Confidence (and where each would run in CI)
+## 7. Findings Driving the Numbers (ranked; development-only advisories listed last, as non-voting)
+## 8. Engineering Review
+
+| Category | Score /10 | Evidence (file:line) |
+|---|---|---|
+
+Overall: <x>/10 — <engineering verdict>. Top issues. Bottom line.
+
+| Fix (projected) | Categories moved (old → new) | New overall |
+|---|---|---|
+
+## 9. How to Reproduce These Numbers
+## 10. Not Measured / Low Confidence (and where each would run in CI)
 ```
