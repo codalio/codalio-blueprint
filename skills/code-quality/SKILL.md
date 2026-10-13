@@ -155,7 +155,7 @@ measured numbers and never change them.
     correctness gate, because it may be an intermittent real bug.
     Never recommend a change that games a metric: splitting a function
     mechanically to lower its complexity score, excluding files from
-    analysis, wrapping failures in broader error handling, or deleting the
+    analysis beyond the exclusions `references/metric-model.md` defines, wrapping failures in broader error handling, or deleting the
     tests that covered duplicated code.
 12. **Run the engineering review.** Read the code and score each category
     in `references/engineering-review.md` from 1 to 10, citing the files and
@@ -176,9 +176,10 @@ measured numbers and never change them.
     job (mutation testing). Where the repository spans several stacks,
     recommend one analysis project covering all of them, so the ratings come
     from one quality gate rather than several disconnected reports.
-14. **Self-review.** Check that every number traces to tool output from this
-    run, or is labeled as sampled or not measured; that every review score
-    cites the code behind it; that every count has its
+14. **Self-review.** Check that every measured number traces to tool output
+    from this run, or is labeled as sampled or not measured; that every review
+    score cites the code behind it; that every development-only advisory is
+    in the findings; that every count has its
     denominator; that coverage never appears without its pairing note; that
     every grade cites its band's source; that every security count went through the severity mapping; that the
     verdict names any gate metric that could not be measured; and that the
@@ -197,6 +198,9 @@ measured numbers and never change them.
 
 ## 1. Scope Assessed (what, why, commit range, stacks)
 ## 2. Quality Gate Verdict (per headline family)
+
+Exploitable defects found by the engineering review: <none, or each with file:line>
+
 ## 3. Headline Scorecard
 
 | Family | Metric | Value | Denominator | Floor / Target / Stretch | Band reached | Band source | 4-week trend |
@@ -205,13 +209,16 @@ measured numbers and never change them.
 ## 4. Supporting Metrics
 ## 5. Trend-Only Metrics (direction since baseline)
 ## 6. Paired Context (coverage and mutation, authorship share)
-## 7. Findings Driving the Numbers (ranked)
+## 7. Findings Driving the Numbers (ranked; development-only advisories listed last, as non-voting)
 ## 8. Engineering Review
 
-| Category | Score /10 | Evidence (file:line) | Projected if fixed |
-|---|---|---|---|
+| Category | Score /10 | Evidence (file:line) |
+|---|---|---|
 
 Overall: <x>/10 — <engineering verdict>. Top issues. Bottom line.
+
+| Fix (projected) | Categories moved (old → new) | New overall |
+|---|---|---|
 
 ## 9. How to Reproduce These Numbers
 ## 10. Not Measured / Low Confidence (and where each would run in CI)

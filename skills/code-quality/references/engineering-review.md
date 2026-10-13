@@ -7,6 +7,9 @@ complements the measured scorecard and never replaces or alters it.
 
 ## Rules
 
+- **Score the scope assessed.** For a change or commit range, score the
+  changed code and the paths it touches, and label any defect that predates
+  the change as pre-existing, so old debt never reads as the change's own.
 - **Read, don't guess.** Read the models, controllers or handlers,
   policies, routes, schema, and frontend entry points before scoring. A
   category whose code was not read is "not scored", never a number.
@@ -20,7 +23,8 @@ complements the measured scorecard and never replaces or alters it.
   - 7–10 **solid**: the approach is sound end to end; 9–10 also needs tests
     or tooling that keep it that way.
 - **Caps.** An exploitable defect (a reachable path that leaks data or
-  bypasses authorization) caps every category it touches at 4 until fixed.
+  bypasses authorization) puts the category whose control it breaks at 1–3,
+  per the anchors, and caps every other category it touches at 4 until fixed.
 - **Verify before scoring.** Before calling a defect exploitable, trace the
   path from a request to the data and confirm the state it depends on is
   reachable.

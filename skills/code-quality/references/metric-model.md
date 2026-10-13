@@ -61,7 +61,7 @@ alongside.
 | Metric | Formula | Tools | Normalization | Stage |
 |---|---|---|---|---|
 | Static analysis findings by severity | findings ÷ lines × 1,000, per severity (critical, high, medium, low) | Brakeman (Rails); Semgrep with an OWASP rule set (JS/TS and others); Bandit (Python) | per KLOC, new code; gate is zero new critical or high | 1 |
-| Dependency vulnerabilities | open advisories in direct and transitive dependencies, split into production and development-only | `npm audit` (production only: `npm audit --omit=dev`); `bundler-audit` (name the Gemfile group each vulnerable gem belongs to); `pip-audit` (production only: `pip-audit -r` on the production requirements file or the lock file's main group; audit development groups separately) | raw count by severity band, production and development-only reported separately | 1 |
+| Dependency vulnerabilities | open advisories in direct and transitive dependencies, split into production and development-only | `npm audit` (production only: `npm audit --omit=dev`); `bundler-audit` (it reports no groups; a vulnerable gem is production when `bundle list --without-group development test` lists it, which includes transitive gems); `pip-audit` (production only: `pip-audit -r` on the production requirements file or the lock file's main group; audit development groups separately) | raw count by severity band, production and development-only reported separately | 1 |
 | Security rating | same letter rule as reliability rating, applied to vulnerabilities | SonarQube or equivalent | letter A–E, new code | 1 |
 
 ### Severity mapping
@@ -98,8 +98,10 @@ locations. Leave out:
 - tests;
 - import blocks and framework boilerplate.
 
-Set these exclusions before measuring and list them in the reproduction
-section. Leaving out anything else to lower the number is gaming the metric
+Excluded code leaves the denominator as well as the count. Set these
+exclusions before measuring and list them in the reproduction section, and
+note beside each duplication grade that the published bands do not define
+these exclusions. Leaving out anything else to lower the number is gaming the metric
 (see `SKILL.md` step 11).
 
 | Metric | Formula | Tools | Normalization | Stage |
