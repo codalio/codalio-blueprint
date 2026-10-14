@@ -31,7 +31,7 @@ the fact.
 | Duplication & maintainability | Duplicate line density | < 3% | yes | jscpd, Flay, or SonarQube |
 | Duplication & maintainability | Technical debt ratio | ≤ 5% (A) | yes | SonarQube |
 | Duplication & maintainability | Error-masking density | no gate value | yes | the linter rules in `references/metric-model.md` |
-| Duplication & maintainability | Code smell density | no gate value | yes | Reek, ESLint, or SonarQube |
+| Duplication & maintainability | Code smell density | no gate value | warning only — reported, never fails the family | Reek, ESLint, or SonarQube |
 
 A gate metric whose tool is not available here is left out of the gate
 rather than counted as passing. The family is decided by the gate metrics
@@ -42,6 +42,13 @@ the range against the same value at the baseline. Any increase in a density,
 or any drop in a letter rating, at the precision the tool reports, is a
 regression. Comparing the whole scope, rather than new code alone, catches
 a change that copies existing code or silences existing errors.
+
+Compute each density once for the whole scope, across all languages, never
+per language: a split lets one stack's noise fail a change that improved the
+whole. Only rows marked "yes" fail their family on a regression. A row marked
+"warning only" is listed under the gate verdict as a warning with its two
+values, because smell counts depend on the rule set and are not a published
+quality threshold.
 
 ## Bands
 
