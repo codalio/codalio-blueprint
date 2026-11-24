@@ -203,6 +203,8 @@ measured numbers and never change them.
 
 Exploitable defects found by the engineering review: <none, or each with file:line>
 
+Warnings (warning-only metrics that regressed): <none, or each with baseline and head values>
+
 ## 3. Headline Scorecard
 
 | Family | Metric | Value | Denominator | Floor / Target / Stretch | Band reached | Band source | 4-week trend |
