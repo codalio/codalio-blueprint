@@ -100,7 +100,9 @@ measured numbers and never change them.
    listed under Headline gate in `references/benchmarks.md` decide a family;
    the rest of the family is reported but does not vote. A family fails when
    any gate metric misses its gate value on new code, or has regressed
-   against the baseline.
+   against the baseline. Metrics marked "warning only" in
+   `references/benchmarks.md` never fail a family; report their regression
+   as a warning beside the verdict.
    - For a change or commit range, the baseline is the base commit, measured
      in this same run with the same tools and configuration.
    - For a whole repository, the baseline is the previous assessment doc,
@@ -200,6 +202,8 @@ measured numbers and never change them.
 ## 2. Quality Gate Verdict (per headline family)
 
 Exploitable defects found by the engineering review: <none, or each with file:line>
+
+Warnings (warning-only metrics that regressed): <none, or each with baseline and head values>
 
 ## 3. Headline Scorecard
 
